@@ -1,0 +1,107 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ChatGPT',{
+        category: 'ChatGPT',
+        color: '#1a75ff',
+        defaults: {
+            name: {value: ""},
+            Token:{value: ""},
+            Model:{value: ""},
+            SystemSetting: {value: ""},
+            functions: {value: "", validate: RED.validators.typedInput("functionsType")},
+            functionsType: {value: "str"},
+            function_call: {value: "auto", validate: RED.validators.typedInput("function_callType")},
+            function_callType: {value: "str"},
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"ChatGPT";
+        },
+        oneditprepare: function () {
+            $('#node-input-functions').typedInput({
+                default: 'msg',
+                typeField: $("#node-input-functionsType"),
+                types: ['msg', 'flow', 'global', 'str', 'json', 'jsonata']
+            });
+            $('#node-input-function_call').typedInput({
+                default: 'str',
+                typeField: $("#node-input-function_callType"),
+                types: ['msg', 'flow', 'global', 'str', 'json', 'jsonata']
+            });
+        }
+    });
+ </script>
+ 
+ <script type="text/html" data-template-name="ChatGPT">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Token">
+            <i class="icon-tag"></i>
+            Token
+        </label>
+        <input type="password" id="node-input-Token" placeholder="Token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Model">
+            <i class="icon-tag"></i>
+            Model
+        </label>
+        <input type="text" id="node-input-Model" placeholder="gpt-3.5-turbo">
+    </div>
+    <div class="form-row">
+        <label for="node-input-SystemSetting">
+            <i class="icon-tag"></i>
+            SystemSetting
+        </label>
+        <input type="text" id="node-input-SystemSetting" placeholder="SystemSetting">
+    </div>
+    <div class="form-row">
+        <label style="padding-top: 8px" for="node-input-functions"><i class="fa fa-ellipsis-h"></i> functions</label>
+        <input type="text" id="node-input-functions">
+        <input type="hidden" id="node-input-functionsType">
+    </div>
+    <div class="form-row">
+        <label style="padding-top: 8px" for="node-input-function_call"><i class="fa fa-ellipsis-h"></i> function_call</label>
+        <input type="text" id="node-input-function_call" placeholder="auto">
+        <input type="hidden" id="node-input-function_callType">
+    </div>
+ </script>
+ 
+ <script type="text/html" data-help-name="ChatGPT">
+    <p>You can try ChatGPT.</p>
+<h3>Input</h3>
+<dl class="message-properties">
+    <dt>payload
+        <span class="property-type">string</span>
+    </dt>
+    <dd>Content of the message to be passed to ChatGPT.</dd>
+    <dt class="optional">Token <span class="property-type">string</span></dt>
+    <dd>Token for ChatGPT, you can also set token dynamically by msg.token.</dd>
+    <dt class="optional">Model <span class="property-type">string</span></dt>
+    <dd>Model for ChatGPT. Specify the name of the model you want to use, such as <code>gpt-3.5-turbo</code>, <code>gpt-4</code>, <code>gpt-3.5-turbo-0613</code>, etc. The default is <code>gpt-3.5-turbo</code>.</dd>
+    <dt class="optional">SystemSetting <span class="property-type">string</span></dt>
+    <dd>Specify settings for the AI assistant, such as adding "テヘペロ" to the end of sentences, etc.</dd>
+    <dt class="optional">pastMessages <span class="property-type">array</span></dt>
+    <dd>Pass the conversation history. Necessary for continuing the conversation.</dd>
+    <dt class="optional">functions <span class="property-type">array</span></dt>
+    <dd>Configure Function Calling. Pass in array format as shown <a href="https://openai.com/blog/function-calling-and-other-api-updates">here</a>. Available from gpt-3.5-turbo-0613 onwards.</dd>
+    <dt class="optional">function_call <span class="property-type">string | object</span></dt>
+    <dd>For Function Calling, <code>auto</code> means it is called automatically. <code>none</code> means it is not called. Specify <code>{name: xxxxxx}</code> to execute the specified function.</dd>
+</dl>
+<h3>Output</h3>
+<dl class="message-properties">
+    <dt>payload
+        <span class="property-type">string</span>
+    </dt>
+    <dd>Response message from ChatGPT.</dd>
+    <dt>pastMessages <span class="property-type">array</span></dt>
+    <dd>Returns the conversation history.</dd>
+    <dt>payloadFunction<span class="property-type">object</span></dt>
+    <dd>Returns the value of Function Calling. Includes the function name and parsed JSON arguments.</dd>
+</dl>
+ </script>

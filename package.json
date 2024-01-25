@@ -1,0 +1,29 @@
+{
+  "name": "@sumit_shinde_84/node-red-contrib-node-gpt",
+  "version": "1.0.2",
+  "description": "Node-RED node to interact with chatgpt",
+  "main": "node.js",
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "ChatGPT": "node.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumitshinde-84/node-red-contrib-node-gpt"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red",
+    "chat-gpt",
+    "gpt"
+  ],
+  "author": "sumit shinde",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^3.3.0"
+  }
+}
