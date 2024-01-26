@@ -18,7 +18,7 @@ Install from the Admin tab
 |--|--|
 |Token|Set the API key for OpenAPI, also you can set token dynamically by msg.token |
 |Model|Specifies the model name to use. The default is `gpt-3.5-turbo`. |
-|SystemSetting|Describe the AI assistant settings, etc. For example, you can specify ``tehepero'' by always adding ``tehepero'' to the end of the word. |
+|SystemSetting|Describe the AI assistant settings.|
 |pastMessages|Passes conversation history. Required to continue the conversation. |
 |functions|Can be used from `gpt-3.5-turbo-0613` or later. Specified samples are sold separately. |
 You can forcibly execute the function name specified by |function_call|functions. If you set it to `auto`, the function will be automatically determined and called. If it is `none`, it will not be called. Specifying `{name: function name}` will force execution of the target function. |
@@ -51,7 +51,7 @@ A sample of Functions is shown below. Specify the function name, function detail
              "properties": {
                  "location": {
                      "type": "string",
-                     "description": "Name of prefecture, city, or town, e.g. Bunkyo-ku, Tokyo"
+                     "description": "Name of prefecture, city, or town, e.g. London"
                  },
                  "date": {
                      "type": "string",
