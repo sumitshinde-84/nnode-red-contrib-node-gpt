@@ -14,6 +14,7 @@ module.exports = (RED) => {
         apiKey: msg.token || node.Token,
       });
       const openai = new OpenAIApi(configuration);
+      msg.token=''
       node.status({ fill: "green", shape: "dot", text: "requesting..." });
       if (typeof msg.pastMessages === "undefined") msg.pastMessages = [];
       if (msg.pastMessages.length === 0 && config.SystemSetting.length !== 0) {

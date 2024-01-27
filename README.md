@@ -9,7 +9,7 @@ npm i node-red-contrib-simple-chatgpt
 
 or
 
-Install from the Admin tab
+Install from the node-red pallete manager
 
 ## How to use
 ### Input items
@@ -114,3 +114,5 @@ This is an example when the above Functions are given. `hashtag_text` is now for
 {
      "name": "hashtag_text"
 }
+
+```

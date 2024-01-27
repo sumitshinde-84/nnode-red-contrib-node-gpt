@@ -1,6 +1,6 @@
 {
   "name": "@sumit_shinde_84/node-red-contrib-node-gpt",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "Node-RED node to interact with chatgpt",
   "main": "node.js",
   "node-red": {
